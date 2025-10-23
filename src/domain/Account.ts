@@ -11,14 +11,14 @@ export enum AccountType {
 
 export type AccountProps = {
     id?: string;
-    user: User;
+    userId: string;
     name: string;
     type: AccountType;
 }
 
 export class Account {
     private readonly id: string;
-    private readonly user: User;
+    private readonly userId: string;
     private name: string;
     private type: AccountType;
     // Saldo/balans często nie jest trzymane bezpośrednio w obiekcie,
@@ -28,16 +28,16 @@ export class Account {
 
     constructor(props: AccountProps) {
         this.id = props.id ?? uuidv4();
-        this.user = props.user;
+        this.userId = props.userId;
         this.name = props.name;
         this.type = props.type;
     }
 
-    public static create(user: User, name: string, type: AccountType) {
-        return new Account({user, name, type});
+    public static create(userId: string, name: string, type: AccountType) {
+        return new Account({userId, name, type});
     }
 
-    public static of(id: string, user: User, name: string, type: AccountType) {
-        return new Account({id, user, name, type});
+    public static of(id: string, userId: string, name: string, type: AccountType) {
+        return new Account({id, userId, name, type});
     }
 }
