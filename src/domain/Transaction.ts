@@ -9,7 +9,7 @@ export enum TransactionType {
 
 export type TransactionProps = {
     id?: string;
-    account: Account;
+    accountId: string;
     date: Date;
     amount: number;
     from: string;
@@ -20,7 +20,7 @@ export type TransactionProps = {
 
 export class Transaction {
     private readonly id: string;
-    private readonly account: Account;
+    private readonly accountId: string;
     private readonly date: Date;
     private amount: number;
     private from: string
@@ -31,7 +31,7 @@ export class Transaction {
 
     constructor(props: TransactionProps) {
         this.id = props.id ?? uuidv4();
-        this.account = props.account;
+        this.accountId = props.accountId;
         this.date = props.date;
         this.amount = props.amount;
         this.from = props.from;
@@ -40,24 +40,11 @@ export class Transaction {
         this.type = props.type;
     }
 
-    public static create(account: Account, date: Date, amount: number, from: string, description: string, isForSomeone: boolean, type: TransactionType) {
-        return new Transaction({account, date, amount, from, description, type, isForSomeone});
+    public static create(accountId: string, date: Date, amount: number, from: string, description: string, isForSomeone: boolean, type: TransactionType) {
+        return new Transaction({accountId, date, amount, from, description, type, isForSomeone});
     }
 
-    public static of(id: string, account: Account, date: Date, amount: number, from: string, description: string, isForSomeone: boolean, type: TransactionType) {
-        return new Transaction({id, account, date, amount, from, description, type, isForSomeone});
+    public static of(id: string, accountId: string, date: Date, amount: number, from: string, description: string, isForSomeone: boolean, type: TransactionType) {
+        return new Transaction({id, accountId, date, amount, from, description, type, isForSomeone});
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
