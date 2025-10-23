@@ -12,6 +12,7 @@ export type TransactionProps = {
     amount: number;
     from: string;
     description: string;
+    categoryId: string;
     isForSomeone: boolean;
     type: TransactionType;
 }
@@ -23,6 +24,7 @@ export class Transaction {
     private amount: number;
     private from: string
     private description: string;
+    private categoryId: string;
     private isForSomeone: boolean;
     private readonly type: TransactionType;
 
@@ -34,15 +36,16 @@ export class Transaction {
         this.amount = props.amount;
         this.from = props.from;
         this.description = props.description;
+        this.categoryId = props.categoryId;
         this.isForSomeone = props.isForSomeone;
         this.type = props.type;
     }
 
-    public static create(accountId: string, date: Date, amount: number, from: string, description: string, isForSomeone: boolean, type: TransactionType) {
-        return new Transaction({accountId, date, amount, from, description, type, isForSomeone});
+    public static create(accountId: string, date: Date, amount: number, from: string, description: string, categoryId: string, isForSomeone: boolean, type: TransactionType) {
+        return new Transaction({accountId, date, amount, from, description, categoryId, type, isForSomeone});
     }
 
-    public static of(id: string, accountId: string, date: Date, amount: number, from: string, description: string, isForSomeone: boolean, type: TransactionType) {
-        return new Transaction({id, accountId, date, amount, from, description, type, isForSomeone});
+    public static of(id: string, accountId: string, date: Date, amount: number, from: string, description: string, categoryId: string, isForSomeone: boolean, type: TransactionType) {
+        return new Transaction({id, accountId, date, amount, from, description, categoryId, type, isForSomeone});
     }
 }
