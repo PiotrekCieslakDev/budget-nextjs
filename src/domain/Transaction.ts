@@ -1,6 +1,4 @@
-import {User} from "@/domain/User";
 import {v4 as uuidv4} from "uuid";
-import {Account} from "@/domain/Account";
 
 export enum TransactionType {
     Income = "INCOME",
